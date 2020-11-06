@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -27,7 +26,7 @@ public class AppOrderTest {
                 $("[type='tel']").setValue("+79995552211");
                 $("[data-test-id='agreement']").click();
                 $(byText("Продолжить")).click();
-                $$("[data-test-id='name'].input_invalid .input__sub").find(exactText("Поле обязательно для заполнения")).waitUntil(text("Поле обязательно для заполнения"), 2000);
+                $$("[data-test-id='name'].input_invalid .input__sub").shouldHave(exactTexts("Поле обязательно для заполнения"));
 
         }
         @Test
